@@ -8,12 +8,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets;
-    private float spawnRate = 1;
+    private float spawnRate = 2;
     private int score = 0;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public bool isGameActive;
     public Button restartButton;
+    public TextMeshProUGUI difficultyText;
 
 
     // Start is called before the first frame update
@@ -22,13 +23,30 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
+        difficultyText.text = "Difficulty: Beginner";
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (score > 30)
+        {
+            spawnRate = 1;
+            difficultyText.text = "Difficulty: Standard";
+        }
 
+                if (score > 50)
+        {
+            spawnRate =  0.5f;
+            difficultyText.text = "Difficulty: Proud";
+        }
+
+            if (score > 100)
+        {
+            spawnRate =  0.3f;
+            difficultyText.text = "Difficulty: Critical!";
+        }
     }
 
     IEnumerator SpawnTarget()

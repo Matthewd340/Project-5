@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
-    float minSpeed = 12;
-    float maxSpeed = 20;
+    float minSpeed = 10;
+    float maxSpeed = 15;
     float maxTorque = 10;
     private GameManager gameManager;
     public int pointValue;
