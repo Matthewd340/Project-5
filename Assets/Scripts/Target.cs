@@ -13,6 +13,7 @@ public class Target : MonoBehaviour
     private GameManager gameManager;
     public int pointValue;
     public ParticleSystem explosionParticle;
+    public ParticleSystem movementParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -41,9 +42,9 @@ public class Target : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    private void OnMouseEnter()
     {
-        if (gameManager.isGameActive)
+        if (gameManager.isGameActive && gameManager.isPaused == false)
         {
             Destroy(gameObject);
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);

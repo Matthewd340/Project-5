@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     public bool isPaused = false;
     public GameObject pauseMenu;
-
+    public AudioSource musicSource;
 
     // Start is called before the first frame update
     public void StartGame(int difficulty)
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         titleScreen.gameObject.SetActive(false);
         spawnRate /= difficulty;
         lives -= difficulty;
+        musicSource.Play();
     }
 
     // Update is called once per frame
